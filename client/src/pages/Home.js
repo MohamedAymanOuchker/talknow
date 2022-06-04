@@ -5,7 +5,8 @@ function Home() {
     if (!localStorage.getItem("loggedIn")) {
       localStorage.setItem("loggedIn", false);
     }
-  }, [])
+  }, []);
+  
   return (
     <div>Home</div>
   )

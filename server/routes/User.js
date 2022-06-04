@@ -38,7 +38,7 @@ router.post("/login", (req, res) => {
     } else {
       res.json({ loggedIn: false, message: "User not found" });
     }
-  });
+  })
 });
 
 module.exports = router;

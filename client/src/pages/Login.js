@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Axios from 'axios';
+import {useNavigate} from 'react-router-dom'
 import '../styles.css'
 
 function Login() {
@@ -7,6 +8,8 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  let  navigate = useNavigate();
 
   const login = () => {
     Axios.post("http://localhost:3001/user/login", {
@@ -16,6 +19,7 @@ function Login() {
       if (res.data.loggedIn) {
         localStorage.setItem("loggedIn", true);
         localStorage.setItem("email", res.data.email);
+        navigate('/');
       } else {
         setErrorMessage(res.data.message);
       }

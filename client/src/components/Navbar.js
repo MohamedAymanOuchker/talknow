@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
-import '../styles.css'
+import React, { useEffect, useState } from "react";
+import "../styles.css";
 
 function Navbar() {
-    const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true);
 
-    useEffect(() => {
-        setLoggedIn(localStorage.getItem("loggedIn"))
-    }, [localStorage.getItem("loggedIn")])
+  useEffect(() => {
+    setLoggedIn(localStorage.getItem("loggedIn"));
+  }, [localStorage.getItem("loggedIn")]);
 
-    return (
-        <>
-            {/* <nav class="bg-gray-700">
+  return (
+    <>
+      {/* <nav class="bg-gray-700">
                 <div class="p-4 lg:px-2">
                     <div class="flex items-center justify-between h-16">
                         <div class="flex-1 flex items-center justify-end">
@@ -26,30 +26,52 @@ function Navbar() {
                     </div>
                 </div>
             </nav> */}
-            <nav className="bg-gray-700">
-                <div className="p-4 lg:px-2">
-                    <div className="flex items-center justify-between h-12">
-                        <div className="flex-1 flex items-center justify-end">
-                            <div className="space-x-6">
-                                <a href="/" className="text-white hover:text-green-400">Home</a>
-                                {!loggedIn ? (
-                                    <>
-                                        <a href="/profile" className="text-white hover:text-green-400">Profile</a>
-                                    </>
-
-                                ) : (
-                                    <>
-                                        <a href="/register" className="text-white hover:text-green-400">Register</a>
-                                        <a href="/login" className="text-white hover:text-green-400">Login</a>
-                                    </>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </>
-    )
+      <nav className="bg-gray-700">
+        <div className="p-4 lg:px-2">
+          <div className="flex items-center justify-between h-12">
+            <div className="flex-1 flex items-center justify-end">
+              <div className="space-x-6">
+                <a href="/" className="text-white hover:text-green-400">
+                  Home
+                </a>
+                {loggedIn ? (
+                  <>
+                    <a
+                      href="/profile"
+                      className="text-white hover:text-green-400"
+                    >
+                      Profile
+                    </a>
+                    <a
+                      href="/upload"
+                      className="text-white hover:text-green-400"
+                    >
+                      Upload
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      href="/register"
+                      className="text-white hover:text-green-400"
+                    >
+                      Register
+                    </a>
+                    <a
+                      href="/login"
+                      className="text-white hover:text-green-400"
+                    >
+                      Login
+                    </a>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;
