@@ -16,7 +16,7 @@ function Upload() {
     formData.append("file", image[0]);
     formData.append("upload_preset", "rkoeqpel");
     Axios.post(
-      `https://api.cloudinary.com/v1_1/iqihqnfdf/image/upload`,
+      `https://api.cloudinary.com/v1_1/ayman-ouchker-inc/image/upload`,
       formData
     ).then((response) => {
       const fileName = response.data.public_id;
@@ -25,6 +25,7 @@ function Upload() {
         title: title,
         description: description,
         image: fileName,
+        author: localStorage.getItem("email"),
       }).then(() => {
         navigate("/");
       });
