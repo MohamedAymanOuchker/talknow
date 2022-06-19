@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Upload from "./pages/Upload";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
+import ChatApp from "./pages/ChatApp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path='/chat' element={<ChatApp />} />
         </Routes>
       </BrowserRouter>
     </>

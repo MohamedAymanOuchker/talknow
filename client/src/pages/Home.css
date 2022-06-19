@@ -58,3 +58,9 @@
 .Home .Post .Engagement #likeButton:active {
   color: black;
 }
+.chat-icon{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 3%;
+  left: 97%;
+}

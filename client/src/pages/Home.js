@@ -3,9 +3,11 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Image } from "cloudinary-react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 
 function Home() {
   const [uploads, setUploads] = useState([]);
@@ -35,33 +37,38 @@ function Home() {
   };
 
   return (
-    <div className="Home">
-      {uploads.map((val, key) => {
-        return (
-          <div className="Post">
-            <div className="Image">
-              <Image cloudName="ayman-ouchker-inc" publicId={val.image} />
-            </div>
-            <div className="Content">
-              <div className="title">
-                {" "}
-                {val.title} / by @{val.author.split("@")[0]}
+    <>
+      <div>
+        <Link to={"./chat"}><ChatBubbleIcon className="chat-icon" /></Link>
+      </div>
+      <div className="Home">
+        {uploads.map((val, key) => {
+          return (
+            <div className="Post">
+              <div className="Image">
+                <Image cloudName="ayman-ouchker-inc" publicId={val.image} />
               </div>
-              <div className="description">{val.description}</div>
+              <div className="Content">
+                <div className="title">
+                  {" "}
+                  {val.title} / by @{val.author.split("@")[0]}
+                </div>
+                <div className="description">{val.description}</div>
+              </div>
+              <div className="Engagement">
+                <ThumbUpAltIcon
+                  id="likeButton"
+                  onClick={() => {
+                    likePost(val.id, key);
+                  }}
+                />
+                {val.likes}
+              </div>
             </div>
-            <div className="Engagement">
-              <ThumbUpAltIcon
-                id="likeButton"
-                onClick={() => {
-                  likePost(val.id, key);
-                }}
-              />
-              {val.likes}
-            </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </>
   );
 }
 
